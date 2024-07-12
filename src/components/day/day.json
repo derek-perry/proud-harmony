@@ -1,0 +1,20 @@
+{
+  "collectionName": "components_day_days",
+  "info": {
+    "displayName": "Day",
+    "icon": "sun"
+  },
+  "options": {},
+  "attributes": {
+    "StartTime": {
+      "type": "datetime",
+      "required": true
+    },
+    "EndTime": {
+      "type": "datetime"
+    },
+    "Price": {
+      "type": "string"
+    }
+  }
+}

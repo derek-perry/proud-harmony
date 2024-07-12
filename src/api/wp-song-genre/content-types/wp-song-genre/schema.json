@@ -1,0 +1,25 @@
+{
+  "kind": "collectionType",
+  "collectionName": "wp_song_genres",
+  "info": {
+    "singularName": "wp-song-genre",
+    "pluralName": "wp-song-genres",
+    "displayName": "WP-SongGenres"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Name": {
+      "type": "string",
+      "required": true
+    },
+    "Songs": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::wp-song.wp-song",
+      "inversedBy": "SongGenres"
+    }
+  }
+}

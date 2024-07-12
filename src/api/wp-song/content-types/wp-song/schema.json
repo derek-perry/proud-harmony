@@ -1,0 +1,35 @@
+{
+  "kind": "collectionType",
+  "collectionName": "wp_songs",
+  "info": {
+    "singularName": "wp-song",
+    "pluralName": "wp-songs",
+    "displayName": "WP-Songs"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Name": {
+      "type": "string",
+      "required": true
+    },
+    "Year": {
+      "type": "date",
+      "required": true
+    },
+    "SongArtists": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::wp-song-artist.wp-song-artist",
+      "mappedBy": "Songs"
+    },
+    "SongGenres": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::wp-song-genre.wp-song-genre",
+      "mappedBy": "Songs"
+    }
+  }
+}
