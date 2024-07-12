@@ -830,6 +830,7 @@ export interface ApiPagePage extends Schema.CollectionType {
     singularName: 'page';
     pluralName: 'pages';
     displayName: 'Pages';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -839,6 +840,7 @@ export interface ApiPagePage extends Schema.CollectionType {
     Content: Attribute.Text;
     SEODescription: Attribute.Text;
     Image: Attribute.Media;
+    Slug: Attribute.String & Attribute.Required;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -923,6 +925,7 @@ export interface ApiWpPageWpPage extends Schema.CollectionType {
     singularName: 'wp-page';
     pluralName: 'wp-pages';
     displayName: 'WP-Pages';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -932,6 +935,7 @@ export interface ApiWpPageWpPage extends Schema.CollectionType {
     Content: Attribute.Text;
     SEODescription: Attribute.Text;
     Image: Attribute.Media;
+    Slug: Attribute.String & Attribute.Required;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
