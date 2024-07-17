@@ -1,0 +1,27 @@
+{
+  "kind": "collectionType",
+  "collectionName": "timezones",
+  "info": {
+    "singularName": "timezone",
+    "pluralName": "timezones",
+    "displayName": "Timezone"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Abbreviation": {
+      "type": "string",
+      "required": true
+    },
+    "Name": {
+      "type": "string",
+      "required": true
+    },
+    "Offset": {
+      "type": "string",
+      "required": true
+    }
+  }
+}

@@ -801,8 +801,6 @@ export interface ApiEventEvent extends Schema.CollectionType {
   };
   attributes: {
     Name: Attribute.String & Attribute.Required;
-    Date: Attribute.String;
-    Price: Attribute.String;
     Description: Attribute.Text;
     Image: Attribute.Media;
     Day: Attribute.Component<'day.day', true>;
@@ -877,6 +875,37 @@ export interface ApiProjectProject extends Schema.CollectionType {
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::project.project',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiTimezoneTimezone extends Schema.CollectionType {
+  collectionName: 'timezones';
+  info: {
+    singularName: 'timezone';
+    pluralName: 'timezones';
+    displayName: 'Timezone';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    Abbreviation: Attribute.String & Attribute.Required;
+    Name: Attribute.String & Attribute.Required;
+    Offset: Attribute.String & Attribute.Required;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::timezone.timezone',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::timezone.timezone',
       'oneToOne',
       'admin::user'
     > &
@@ -1084,6 +1113,7 @@ declare module '@strapi/types' {
       'api::event.event': ApiEventEvent;
       'api::page.page': ApiPagePage;
       'api::project.project': ApiProjectProject;
+      'api::timezone.timezone': ApiTimezoneTimezone;
       'api::wp-event.wp-event': ApiWpEventWpEvent;
       'api::wp-page.wp-page': ApiWpPageWpPage;
       'api::wp-song.wp-song': ApiWpSongWpSong;

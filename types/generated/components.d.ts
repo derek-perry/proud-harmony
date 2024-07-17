@@ -5,11 +5,17 @@ export interface DayDay extends Schema.Component {
   info: {
     displayName: 'Day';
     icon: 'sun';
+    description: '';
   };
   attributes: {
     StartTime: Attribute.DateTime & Attribute.Required;
     EndTime: Attribute.DateTime;
     Price: Attribute.String;
+    Timezone: Attribute.Relation<
+      'day.day',
+      'oneToOne',
+      'api::timezone.timezone'
+    >;
   };
 }
 
