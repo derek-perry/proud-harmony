@@ -802,8 +802,9 @@ export interface ApiEventEvent extends Schema.CollectionType {
   attributes: {
     Name: Attribute.String & Attribute.Required;
     Description: Attribute.Text;
-    Image: Attribute.Media;
-    Day: Attribute.Component<'day.day', true>;
+    Image: Attribute.Media<'images'>;
+    Day: Attribute.Component<'events.day', true>;
+    Content: Attribute.RichText;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -815,6 +816,40 @@ export interface ApiEventEvent extends Schema.CollectionType {
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::event.event',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiLocationLocation extends Schema.CollectionType {
+  collectionName: 'locations';
+  info: {
+    singularName: 'location';
+    pluralName: 'locations';
+    displayName: 'Locations';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    Name: Attribute.String;
+    StreetAddress: Attribute.String & Attribute.Required;
+    City: Attribute.String;
+    State: Attribute.String;
+    PostalCode: Attribute.String;
+    Website: Attribute.String;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::location.location',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::location.location',
       'oneToOne',
       'admin::user'
     > &
@@ -837,7 +872,7 @@ export interface ApiPagePage extends Schema.CollectionType {
     Title: Attribute.String & Attribute.Required;
     Content: Attribute.Text;
     SEODescription: Attribute.Text;
-    Image: Attribute.Media;
+    Image: Attribute.Media<'images'>;
     Slug: Attribute.String & Attribute.Required;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -863,7 +898,7 @@ export interface ApiProjectProject extends Schema.CollectionType {
     Name: Attribute.String & Attribute.Required;
     Description: Attribute.Text;
     SEODescription: Attribute.Text;
-    Image: Attribute.Media;
+    Image: Attribute.Media<'images'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -919,17 +954,17 @@ export interface ApiWpEventWpEvent extends Schema.CollectionType {
     singularName: 'wp-event';
     pluralName: 'wp-events';
     displayName: 'WP-Events';
+    description: '';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
     Name: Attribute.String & Attribute.Required;
-    Date: Attribute.String;
-    Price: Attribute.String;
     Description: Attribute.Text;
-    Image: Attribute.Media;
-    Day: Attribute.Component<'day.day', true>;
+    Image: Attribute.Media<'images'>;
+    Day: Attribute.Component<'events.day', true>;
+    Content: Attribute.RichText;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -963,7 +998,7 @@ export interface ApiWpPageWpPage extends Schema.CollectionType {
     Title: Attribute.String & Attribute.Required;
     Content: Attribute.Text;
     SEODescription: Attribute.Text;
-    Image: Attribute.Media;
+    Image: Attribute.Media<'images'>;
     Slug: Attribute.String & Attribute.Required;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -989,6 +1024,7 @@ export interface ApiWpSongWpSong extends Schema.CollectionType {
     singularName: 'wp-song';
     pluralName: 'wp-songs';
     displayName: 'WP-Songs';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -1006,6 +1042,8 @@ export interface ApiWpSongWpSong extends Schema.CollectionType {
       'manyToMany',
       'api::wp-song-genre.wp-song-genre'
     >;
+    Artist: Attribute.Enumeration<['Aerosmith', 'Billy Joel']>;
+    Genre: Attribute.Enumeration<['Pop', 'Rock']>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1111,6 +1149,7 @@ declare module '@strapi/types' {
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'plugin::i18n.locale': PluginI18NLocale;
       'api::event.event': ApiEventEvent;
+      'api::location.location': ApiLocationLocation;
       'api::page.page': ApiPagePage;
       'api::project.project': ApiProjectProject;
       'api::timezone.timezone': ApiTimezoneTimezone;

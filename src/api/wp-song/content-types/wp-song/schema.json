@@ -4,7 +4,8 @@
   "info": {
     "singularName": "wp-song",
     "pluralName": "wp-songs",
-    "displayName": "WP-Songs"
+    "displayName": "WP-Songs",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -30,6 +31,20 @@
       "relation": "manyToMany",
       "target": "api::wp-song-genre.wp-song-genre",
       "mappedBy": "Songs"
+    },
+    "Artist": {
+      "type": "enumeration",
+      "enum": [
+        "Aerosmith",
+        "Billy Joel"
+      ]
+    },
+    "Genre": {
+      "type": "enumeration",
+      "enum": [
+        "Pop",
+        "Rock"
+      ]
     }
   }
 }

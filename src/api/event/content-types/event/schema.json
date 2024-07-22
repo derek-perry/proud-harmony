@@ -30,7 +30,10 @@
     "Day": {
       "type": "component",
       "repeatable": true,
-      "component": "day.day"
+      "component": "events.day"
+    },
+    "Content": {
+      "type": "richtext"
     }
   }
 }

@@ -4,7 +4,8 @@
   "info": {
     "singularName": "wp-event",
     "pluralName": "wp-events",
-    "displayName": "WP-Events"
+    "displayName": "WP-Events",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -15,26 +16,24 @@
       "type": "string",
       "required": true
     },
-    "Date": {
-      "type": "string"
-    },
-    "Price": {
-      "type": "string"
-    },
     "Description": {
       "type": "text"
     },
     "Image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
       "allowedTypes": [
         "images"
-      ],
-      "type": "media",
-      "multiple": false
+      ]
     },
     "Day": {
       "type": "component",
       "repeatable": true,
-      "component": "day.day"
+      "component": "events.day"
+    },
+    "Content": {
+      "type": "richtext"
     }
   }
 }
