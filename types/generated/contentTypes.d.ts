@@ -870,10 +870,10 @@ export interface ApiPagePage extends Schema.CollectionType {
   };
   attributes: {
     Title: Attribute.String & Attribute.Required;
-    Content: Attribute.Text;
     SEODescription: Attribute.Text;
     Image: Attribute.Media<'images'>;
     Slug: Attribute.String & Attribute.Required;
+    Content: Attribute.RichText;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -890,15 +890,16 @@ export interface ApiProjectProject extends Schema.CollectionType {
     singularName: 'project';
     pluralName: 'projects';
     displayName: 'Projects';
+    description: '';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
     Name: Attribute.String & Attribute.Required;
-    Description: Attribute.Text;
     SEODescription: Attribute.Text;
     Image: Attribute.Media<'images'>;
+    Content: Attribute.RichText;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -996,10 +997,10 @@ export interface ApiWpPageWpPage extends Schema.CollectionType {
   };
   attributes: {
     Title: Attribute.String & Attribute.Required;
-    Content: Attribute.Text;
     SEODescription: Attribute.Text;
     Image: Attribute.Media<'images'>;
     Slug: Attribute.String & Attribute.Required;
+    Content: Attribute.RichText;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1031,19 +1032,9 @@ export interface ApiWpSongWpSong extends Schema.CollectionType {
   };
   attributes: {
     Name: Attribute.String & Attribute.Required;
-    Year: Attribute.Date & Attribute.Required;
-    SongArtists: Attribute.Relation<
-      'api::wp-song.wp-song',
-      'manyToMany',
-      'api::wp-song-artist.wp-song-artist'
-    >;
-    SongGenres: Attribute.Relation<
-      'api::wp-song.wp-song',
-      'manyToMany',
-      'api::wp-song-genre.wp-song-genre'
-    >;
-    Artist: Attribute.Enumeration<['Aerosmith', 'Billy Joel']>;
-    Genre: Attribute.Enumeration<['Pop', 'Rock']>;
+    Year: Attribute.String;
+    Artist: Attribute.String;
+    Genre: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1055,74 +1046,6 @@ export interface ApiWpSongWpSong extends Schema.CollectionType {
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::wp-song.wp-song',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
-export interface ApiWpSongArtistWpSongArtist extends Schema.CollectionType {
-  collectionName: 'wp_song_artists';
-  info: {
-    singularName: 'wp-song-artist';
-    pluralName: 'wp-song-artists';
-    displayName: 'WP-SongArtists';
-  };
-  options: {
-    draftAndPublish: false;
-  };
-  attributes: {
-    Name: Attribute.String & Attribute.Required;
-    Songs: Attribute.Relation<
-      'api::wp-song-artist.wp-song-artist',
-      'manyToMany',
-      'api::wp-song.wp-song'
-    >;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::wp-song-artist.wp-song-artist',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::wp-song-artist.wp-song-artist',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
-export interface ApiWpSongGenreWpSongGenre extends Schema.CollectionType {
-  collectionName: 'wp_song_genres';
-  info: {
-    singularName: 'wp-song-genre';
-    pluralName: 'wp-song-genres';
-    displayName: 'WP-SongGenres';
-  };
-  options: {
-    draftAndPublish: false;
-  };
-  attributes: {
-    Name: Attribute.String & Attribute.Required;
-    Songs: Attribute.Relation<
-      'api::wp-song-genre.wp-song-genre',
-      'manyToMany',
-      'api::wp-song.wp-song'
-    >;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::wp-song-genre.wp-song-genre',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::wp-song-genre.wp-song-genre',
       'oneToOne',
       'admin::user'
     > &
@@ -1156,8 +1079,6 @@ declare module '@strapi/types' {
       'api::wp-event.wp-event': ApiWpEventWpEvent;
       'api::wp-page.wp-page': ApiWpPageWpPage;
       'api::wp-song.wp-song': ApiWpSongWpSong;
-      'api::wp-song-artist.wp-song-artist': ApiWpSongArtistWpSongArtist;
-      'api::wp-song-genre.wp-song-genre': ApiWpSongGenreWpSongGenre;
     }
   }
 }

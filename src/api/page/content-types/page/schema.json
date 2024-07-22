@@ -16,9 +16,6 @@
       "type": "string",
       "required": true
     },
-    "Content": {
-      "type": "text"
-    },
     "SEODescription": {
       "type": "text"
     },
@@ -33,6 +30,9 @@
     "Slug": {
       "type": "string",
       "required": true
+    },
+    "Content": {
+      "type": "richtext"
     }
   }
 }

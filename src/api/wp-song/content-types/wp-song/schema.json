@@ -17,34 +17,13 @@
       "required": true
     },
     "Year": {
-      "type": "date",
-      "required": true
-    },
-    "SongArtists": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::wp-song-artist.wp-song-artist",
-      "mappedBy": "Songs"
-    },
-    "SongGenres": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::wp-song-genre.wp-song-genre",
-      "mappedBy": "Songs"
+      "type": "string"
     },
     "Artist": {
-      "type": "enumeration",
-      "enum": [
-        "Aerosmith",
-        "Billy Joel"
-      ]
+      "type": "string"
     },
     "Genre": {
-      "type": "enumeration",
-      "enum": [
-        "Pop",
-        "Rock"
-      ]
+      "type": "string"
     }
   }
 }
