@@ -868,6 +868,11 @@ export interface ApiPagePage extends Schema.CollectionType {
   options: {
     draftAndPublish: true;
   };
+  pluginOptions: {
+    'import-export-entries': {
+      idField: 'Title';
+    };
+  };
   attributes: {
     Title: Attribute.String & Attribute.Required;
     SEODescription: Attribute.Text;
@@ -927,6 +932,11 @@ export interface ApiTimezoneTimezone extends Schema.CollectionType {
   };
   options: {
     draftAndPublish: false;
+  };
+  pluginOptions: {
+    'import-export-entries': {
+      idField: 'Abbreviation';
+    };
   };
   attributes: {
     Abbreviation: Attribute.String & Attribute.Required;
@@ -995,6 +1005,11 @@ export interface ApiWpPageWpPage extends Schema.CollectionType {
   options: {
     draftAndPublish: true;
   };
+  pluginOptions: {
+    'import-export-entries': {
+      idField: 'Title';
+    };
+  };
   attributes: {
     Title: Attribute.String & Attribute.Required;
     SEODescription: Attribute.Text;
@@ -1029,6 +1044,11 @@ export interface ApiWpSongWpSong extends Schema.CollectionType {
   };
   options: {
     draftAndPublish: true;
+  };
+  pluginOptions: {
+    'import-export-entries': {
+      idField: 'Name';
+    };
   };
   attributes: {
     Name: Attribute.String & Attribute.Required;

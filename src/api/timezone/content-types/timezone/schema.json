@@ -9,7 +9,11 @@
   "options": {
     "draftAndPublish": false
   },
-  "pluginOptions": {},
+  "pluginOptions": {
+    "import-export-entries": {
+      "idField": "Abbreviation"
+    }
+  },
   "attributes": {
     "Abbreviation": {
       "type": "string",
