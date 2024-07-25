@@ -879,6 +879,9 @@ export interface ApiPagePage extends Schema.CollectionType {
     Image: Attribute.Media<'images'>;
     Slug: Attribute.String & Attribute.Required;
     Content: Attribute.RichText;
+    ShowTitle: Attribute.Boolean &
+      Attribute.Required &
+      Attribute.DefaultTo<true>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -905,6 +908,9 @@ export interface ApiProjectProject extends Schema.CollectionType {
     SEODescription: Attribute.Text;
     Image: Attribute.Media<'images'>;
     Content: Attribute.RichText;
+    ShowName: Attribute.Boolean &
+      Attribute.Required &
+      Attribute.DefaultTo<true>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1016,6 +1022,9 @@ export interface ApiWpPageWpPage extends Schema.CollectionType {
     Image: Attribute.Media<'images'>;
     Slug: Attribute.String & Attribute.Required;
     Content: Attribute.RichText;
+    ShowTitle: Attribute.Boolean &
+      Attribute.Required &
+      Attribute.DefaultTo<true>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

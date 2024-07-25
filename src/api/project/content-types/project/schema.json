@@ -29,6 +29,11 @@
     },
     "Content": {
       "type": "richtext"
+    },
+    "ShowName": {
+      "type": "boolean",
+      "default": true,
+      "required": true
     }
   }
 }
