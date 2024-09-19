@@ -2,6 +2,8 @@
 
 This repository deploys a self-hosted version of [Strapi](https://strapi.io/). Internally it uses a PostgreSQL database to store the data.
 
+[![Dependabot Updates](https://github.com/derek-perry/proud-harmony/actions/workflows/dependabot/dependabot-updates/badge.svg)](https://github.com/derek-perry/proud-harmony/actions/workflows/dependabot/dependabot-updates)
+
 [![Deploy on Railway](https://railway.app/button.svg)](https://railway.app/new/template/strapi?referralCode=milo)
 
 ## ✨ Features
